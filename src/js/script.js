@@ -86,7 +86,7 @@ async function handleSubmit(e) {
         console.log(hits);
 
         if(hits.length === 0) {
-            Notify.failure("Sorry, there are no images matching your search query. Please try again.");
+            Notify.failure(`Sorry, there are no images matching your search query. Please try again.`);
         } else {
             Notify.success(`Yaaaaaaaaay! We found ${totalHits} images.`);
             renderGallery(hits);
