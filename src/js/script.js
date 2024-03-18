@@ -59,7 +59,7 @@ function renderGallery(hits) {
 
     if (options.params.page * options.params.per_page >= totalHits) {
         if (!reachEnd) {
-            Notify.info("We are sorry, but you have reached the end of the search results.");
+            Notiflix.Notify.info("We are sorry, but you have reached the end of the search results.");
             reachEnd = true;
         }
     }
@@ -86,7 +86,7 @@ async function handleSubmit(e) {
         console.log(hits);
 
         if(hits.length === 0) {
-            Notify.failure(`Sorry, there are no images matching your search query. Please try again.`);
+            Notiflix.Notify.failure(`Sorry, there are no images matching your search query. Please try again.`);
         } else {
             Notify.success(`Yaaaaaaaaay! We found ${totalHits} images.`);
             renderGallery(hits);
