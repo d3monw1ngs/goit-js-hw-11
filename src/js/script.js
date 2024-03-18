@@ -59,7 +59,7 @@ function renderGallery(hits) {
 
     if (options.params.page * options.params.per_page >= totalHits) {
         if (!reachEnd) {
-            Notiflix.Notify.info("We are sorry, but you have reached the end of the search results.");
+            Notify.info("We are sorry, but you have reached the end of the search results.");
             reachEnd = true;
         }
     }
@@ -91,9 +91,9 @@ async function handleSubmit(e) {
             Notify.success(`Yaaaaaaaaay! We found ${totalHits} images.`);
             renderGallery(hits);
         }
-        searchInputEl.value = "";
-    } catch(error) {
-        Notify.failure(error);
+        searchInputEl.value = '';
+    } catch(err) {
+        Notify.failure(err);
     }
 }
 
@@ -103,8 +103,8 @@ async function loadMore() {
         const res = await axios.get(BASE_URL, options);
         const hits = res.data.hits;
         renderGallery(hits);
-    } catch (error) {
-        Notify.failure(error);
+    } catch (err) {
+        Notify.failure(err);
     }
  
 }
