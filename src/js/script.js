@@ -92,8 +92,8 @@ async function handleSubmit(e) {
             renderGallery(hits);
         }
         searchInputEl.value = "";
-    } catch(err) {
-        Notify.failure(err);
+    } catch(error) {
+        Notify.failure(error);
     }
 }
 
@@ -103,8 +103,8 @@ async function loadMore() {
         const res = await axios.get(BASE_URL, options);
         const hits = res.data.hits;
         renderGallery(hits);
-    } catch (e) {
-        Notify.failure(e);
+    } catch (error) {
+        Notify.failure(error);
     }
  
 }
