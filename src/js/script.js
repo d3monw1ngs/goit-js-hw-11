@@ -58,9 +58,9 @@ function renderGallery(hits) {
     galleryEl.insertAdjacentHTML("beforeend", markup);
 
     if (options.params.page * options.params.per_page >= totalHits) {
-        if (!reachedEnd) {
+        if (!reachEnd) {
             Notify.info("We are sorry, but you have reached the end of the search results.");
-            reachedEnd = true;
+            reachEnd = true;
         }
     }
     lightbox.refresh();
@@ -79,10 +79,10 @@ async function handleSubmit(e) {
     reachEnd = false;
 
     try {
-        const response = await axios.get(BASE_URL, options);
-        totalHits = response.data.totalHits;
+        const res = await axios.get(BASE_URL, options);
+        totalHits = res.data.totalHits;
 
-        const {hits} = response.data;
+        const {hits} = res.data;
         console.log(hits);
 
         if(hits.length === 0) {
@@ -92,19 +92,19 @@ async function handleSubmit(e) {
             renderGallery(hits);
         }
         searchInputEl.value = "";
-    } catch(error) {
-        Notify.failure(error);
+    } catch(err) {
+        Notify.failure(err);
     }
 }
 
 async function loadMore() {
     options.params.page += 1;
     try {
-        const response = await axios.get(BASE_URL, options);
-        const hits = response.data.hits;
+        const res = await axios.get(BASE_URL, options);
+        const hits = res.data.hits;
         renderGallery(hits);
-    } catch (error) {
-        Notify.failure(error);
+    } catch (e) {
+        Notify.failure(e);
     }
  
 }
